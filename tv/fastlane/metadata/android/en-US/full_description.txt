@@ -1,0 +1,9 @@
+<p>The Piaz on Android TV and Google TV: independent news on West Asia, Iran, Palestine and US foreign policy.</p>
+<ul>
+<li><b>Today:</b> top stories to read on the big screen, plus the latest videos and the Daily Brief.</li>
+<li><b>Live:</b> watch up to four channels at once. The one you move to is the one you hear.</li>
+<li><b>Watch:</b> independent YouTube channels, played in YouTube's own embedded player.</li>
+<li><b>Listen:</b> the Daily Brief podcast.</li>
+<li><b>My sources:</b> add channels with one press from the suggestions, or say a name with voice search.</li>
+</ul>
+<p>No account, no ads and no analytics. Videos come from YouTube and live streams from their broadcasters, which are services outside this app.</p>

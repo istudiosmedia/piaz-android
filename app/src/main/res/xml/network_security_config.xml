@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Some broadcasters and iptv-org entries still publish live streams over plain http.
+     Everything the app itself serves (piaz.news, feeds, YouTube) is https. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

@@ -1,0 +1,11 @@
+<p>The Piaz is independent news from a different perspective: West Asia, Iran, Palestine and US foreign policy, with the sources behind each story.</p>
+<ul>
+<li><b>Today:</b> the latest reporting from piaz.news, grouped by region.</li>
+<li><b>Shorts:</b> swipe through short videos from The Piaz and independent channels.</li>
+<li><b>Watch:</b> interviews and explainers from independent YouTube channels in one place. Add any channel by typing its name.</li>
+<li><b>Live TV:</b> broadcasters from around the world, and up to four channels at once. Find more by name in the public iptv-org directory.</li>
+<li><b>Listen:</b> the Daily Brief podcast, with background playback and lock-screen controls.</li>
+<li><b>Saved:</b> keep stories and videos for later.</li>
+</ul>
+<p><b>Privacy:</b> no account, no ads and no analytics. Article pages block advertising and analytics trackers, and nothing they store is kept after you close them. Videos play in YouTube's privacy-enhanced embedded player.</p>
+<p>Videos come from YouTube and live streams from their broadcasters, which are services outside this app. Memberships and the shop open in your browser.</p>

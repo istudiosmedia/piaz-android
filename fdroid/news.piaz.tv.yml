@@ -1,0 +1,32 @@
+# F-Droid build recipe. Submit as a merge request to https://gitlab.com/fdroid/fdroiddata (metadata/news.piaz.tv.yml).
+AntiFeatures:
+  NonFreeNet:
+    en-US: Videos play from YouTube and live TV streams come from third-party broadcasters.
+Categories:
+  - Multimedia
+  - Reading
+License: GPL-3.0-only
+AuthorName: IStudios Media LLC
+WebSite: https://piaz.news
+SourceCode: https://github.com/istudiosmedia/piaz-android
+IssueTracker: https://github.com/istudiosmedia/piaz-android/issues
+Changelog: https://github.com/istudiosmedia/piaz-android/releases
+
+AutoName: The Piaz for TV
+
+RepoType: git
+Repo: https://github.com/istudiosmedia/piaz-android.git
+
+Builds:
+  - versionName: '3.1'
+    versionCode: 1
+    commit: v3.1
+    subdir: tv
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+UpdateCheckData: tv/build.gradle.kts|versionCode\s*=\s*(\d+)|.|versionName\s*=\s*"([^"]+)"
+CurrentVersion: '3.1'
+CurrentVersionCode: 1
