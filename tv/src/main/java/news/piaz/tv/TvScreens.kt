@@ -115,7 +115,7 @@ fun TvWatch() {
         item {
             TvRow("Channels", "Watch") {
                 item {
-                    TvCard("Add a channel", "Suggestions and voice search", 160, onClick = { nav.finding = Finding.YouTube }) {
+                    TvCard("Add a channel", if (voiceAvailable()) "Suggestions and voice search" else "Suggestions and search", 160, onClick = { nav.finding = Finding.YouTube }) {
                         Box(Modifier.size(160.dp), contentAlignment = Alignment.Center) { Icon(Icons.Filled.Add, null, Modifier.size(56.dp), tint = Brand.turquoise) }
                     }
                 }

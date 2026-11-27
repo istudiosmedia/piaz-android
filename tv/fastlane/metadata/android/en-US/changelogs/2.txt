@@ -1,0 +1,1 @@
+Fire TV support: voice search and its wording are hidden on devices without a speech recognizer, and the voice check now works on Android 11 and later.

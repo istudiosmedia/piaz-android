@@ -21,8 +21,8 @@ android {
         applicationId = "news.piaz.tv"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1
-        versionName = "3.1"
+        versionCode = 2
+        versionName = "3.1.1"
     }
     signingConfigs {
         if (key("storeFile") != null) create("release") {

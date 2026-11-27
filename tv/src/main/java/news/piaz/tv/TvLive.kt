@@ -108,7 +108,7 @@ fun TvLive() {
         }
         LazyVerticalGrid(GridCells.Adaptive(190.dp), contentPadding = PaddingValues(horizontal = 58.dp, vertical = 16.dp), horizontalArrangement = Arrangement.spacedBy(28.dp), verticalArrangement = Arrangement.spacedBy(28.dp)) {
             item {
-                TvCard("Add a channel", "Suggestions and voice search", 190, onClick = { nav.finding = Finding.Live }) {
+                TvCard("Add a channel", if (voiceAvailable()) "Suggestions and voice search" else "Suggestions and search", 190, onClick = { nav.finding = Finding.Live }) {
                     Box(Modifier.size(190.dp, 120.dp), contentAlignment = Alignment.Center) { Icon(Icons.Filled.Add, null, Modifier.size(52.dp), tint = Brand.turquoise) }
                 }
             }
@@ -255,7 +255,7 @@ fun TvSources() {
             Text("Add a source", style = headline(44, Brand.paper))
             Button({ nav.finding = Finding.YouTube }, Modifier.fillMaxWidth()) { Icon(Icons.Filled.Search, null); Text("  Find a YouTube channel") }
             Button({ nav.finding = Finding.Live }, Modifier.fillMaxWidth()) { Icon(Icons.Filled.Search, null); Text("  Find a live TV channel") }
-            Text("Suggestions appear first, so most channels take one press. Hold the microphone button on your remote, or press the microphone on screen, to say a name.", color = TvMuted, fontSize = 16.sp)
+            Text("Suggestions appear first, so most channels take one press." + if (voiceAvailable()) " Hold the microphone button on your remote, or press the microphone on screen, to say a name." else " Or type a name to search.", color = TvMuted, fontSize = 16.sp)
         }
     }
 }
@@ -286,8 +286,7 @@ fun TvAddSource(start: Finding) {
             .putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
             .putExtra(RecognizerIntent.EXTRA_PROMPT, "Say a channel name")
     }
-    // Fire TV has no speech recognizer for apps (its mic button goes to Alexa), so the button is hidden there.
-    val canListen = remember { speech.resolveActivity(ctx.packageManager) != null }
+    val canListen = voiceAvailable()
     fun listen() { if (canListen) voice.launch(speech) }
     LaunchedEffect(mode, query) {
         delay(if (query.isEmpty()) 0 else 500)
@@ -368,4 +367,11 @@ private fun SearchField(value: String, onChange: (String) -> Unit, hint: String,
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search), keyboardActions = KeyboardActions(onSearch = {}),
         decorationBox = { inner -> Box { if (value.isEmpty()) Text(hint, color = TvMuted, fontSize = 18.sp); inner() } },
     )
+}
+
+/** Fire TV has no speech recognizer for apps (its mic button goes to Alexa), so voice search is hidden there. */
+@Composable
+fun voiceAvailable(): Boolean {
+    val ctx = LocalContext.current
+    return remember { Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).resolveActivity(ctx.packageManager) != null }
 }
