@@ -19,6 +19,6 @@ Title: The Piaz (news.piaz) and The Piaz for TV (news.piaz.tv)
 Title: Inclusion request: The Piaz (news.piaz, news.piaz.tv)
 
 Repo: https://github.com/istudiosmedia/piaz-android
-Releases with signed APKs: https://github.com/istudiosmedia/piaz-android/releases (`app-release.apk` for phones, `tv-release.apk` for Android TV)
+Releases with signed APKs: https://github.com/istudiosmedia/piaz-android/releases (`ThePiaz-<version>-phone.apk` for phones, `ThePiaz-<version>-tv.apk` for Android TV). Signing certificate SHA-256: 26198705275434933733558b4712aaa3e0d2247c3f70a767cab0d347bd789667
 License: GPL-3.0-only
 Description: Independent news on West Asia, Iran and US foreign policy. No account, ads or analytics. Fastlane metadata is in `app/fastlane` and `tv/fastlane`.
