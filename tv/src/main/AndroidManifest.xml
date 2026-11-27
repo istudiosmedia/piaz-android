@@ -4,6 +4,13 @@
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
     <uses-feature android:name="android.hardware.microphone" android:required="false" />
 
+    <!-- Android 11+ hides other apps unless declared, so without this the voice search check always fails. -->
+    <queries>
+        <intent>
+            <action android:name="android.speech.action.RECOGNIZE_SPEECH" />
+        </intent>
+    </queries>
+
     <application
         android:name=".PiazTvApplication"
         android:allowBackup="false"

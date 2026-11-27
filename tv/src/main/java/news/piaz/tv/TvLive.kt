@@ -281,12 +281,14 @@ fun TvAddSource(start: Finding) {
         r.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.firstOrNull()?.let { query = it }
     }
     val ctx = LocalContext.current
-    fun listen() {
-        val i = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+    val speech = remember {
+        Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             .putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
             .putExtra(RecognizerIntent.EXTRA_PROMPT, "Say a channel name")
-        if (i.resolveActivity(ctx.packageManager) != null) voice.launch(i)
     }
+    // Fire TV has no speech recognizer for apps (its mic button goes to Alexa), so the button is hidden there.
+    val canListen = remember { speech.resolveActivity(ctx.packageManager) != null }
+    fun listen() { if (canListen) voice.launch(speech) }
     LaunchedEffect(mode, query) {
         delay(if (query.isEmpty()) 0 else 500)
         searching = true
@@ -311,8 +313,13 @@ fun TvAddSource(start: Finding) {
                 Button({ nav.finding = null }) { Text("Done") }
             }
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                Button({ listen() }) { Icon(Icons.Filled.Mic, null); Text("  Say a name") }
-                SearchField(query, { query = it }, if (mode == Finding.YouTube) "Or type a channel name" else "Or type a name, e.g. Al Jazeera", Modifier.width(560.dp))
+                if (canListen) Button({ listen() }) { Icon(Icons.Filled.Mic, null); Text("  Say a name") }
+                SearchField(query, { query = it }, when {
+                    !canListen && mode == Finding.YouTube -> "Type a channel name"
+                    !canListen -> "Type a name, e.g. Al Jazeera"
+                    mode == Finding.YouTube -> "Or type a channel name"
+                    else -> "Or type a name, e.g. Al Jazeera"
+                }, Modifier.width(560.dp))
                 if (searching) Text("Searching…", color = TvMuted)
             }
             Text(

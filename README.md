@@ -78,6 +78,15 @@ Store listings (titles, descriptions, icons, screenshots, TV banner, changelogs)
 
 F-Droid builds and GitHub release builds are signed with different keys, so a user cannot update from one to the other without reinstalling. The release notes say so.
 
+## Amazon Fire TV
+
+The TV app (`news.piaz.tv`) runs on Fire TV devices with Fire OS 7 or 8 (Android 9 and 11). It uses no Google services: playback is Media3 and YouTube plays in the system WebView. Fire TV has no speech recognizer for apps (its mic button goes to Alexa), so the "Say a name" button is hidden there and the on-screen keyboard is used instead.
+
+- **Not supported:** Fire TV devices on Vega OS (the Fire TV Stick 4K Select, 2025). Vega OS does not run Android apps.
+- **Sideload now:** on the Fire TV, turn on Settings > My Fire TV > Developer options > Install unknown apps for the Downloader app, then enter the GitHub release link for `ThePiaz-<version>-tv.apk`.
+- **Amazon Appstore:** needs a free Amazon Developer account (developer.amazon.com). Submit the signed TV APK (the same file as the GitHub release), the 1280×720 banner, a 512×512 icon, at least three 1920×1080 screenshots, the descriptions from `tv/fastlane/`, and the privacy policy URL. Amazon tests the app on real Fire TV hardware before listing it. Amazon has no closed-testing requirement.
+- **Not tested:** no Fire TV hardware or emulator was available. Check D-pad navigation, YouTube playback and the 4-feed wall on a real Fire TV Stick before submitting; older sticks have fewer video decoders and may drop wall feeds.
+
 ## Google Play launch checklist
 
 1. **Developer account.** Register at play.google.com/console as an organization (IStudios Media LLC). This needs a D-U-N-S number, a one-time USD 25 fee, identity verification, and a public developer email and website. Organization accounts take days to verify, so start early.
