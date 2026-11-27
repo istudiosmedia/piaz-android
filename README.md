@@ -49,7 +49,7 @@ Or set `PIAZ_STOREFILE`, `PIAZ_STOREPASSWORD`, `PIAZ_KEYALIAS` and `PIAZ_KEYPASS
 
 ## What to edit
 
-- **Live channels:** `shared/src/main/java/news/piaz/shared/LiveChannels.kt`. The built-in lineup and the suggestions shown in Add. Set `SHIP_SANCTIONED = false` to drop Press TV, RT and RT Arabic.
+- **Live channels:** `shared/src/main/java/news/piaz/shared/LiveChannels.kt`. The built-in lineup and the suggestions shown in Add. Press TV, RT and RT Arabic are left out for now (US sanctions). Their entries stay in that file; to ship them, set `piaz.shipSanctioned=true` in `gradle.properties`, or build once with `-Ppiaz.shipSanctioned=true`.
 - **Built-in YouTube channels:** `Channel.builtIn` in `Models.kt`. **Suggested channels:** `Directory.kt`.
 - **Tracker block list:** `Privacy` in `Web.kt`. It matches `Piaz/Views/Web.swift` on iOS.
 
@@ -93,5 +93,5 @@ F-Droid and IzzyOnDroid builds are signed with different keys, so a user cannot 
 5. **Content rating.** Complete the IARC questionnaire under Policy > App content. Category: News. Expect news content showing violence and conflict, no user-generated content, and no purchases. Also answer the News app declaration: The Piaz is a news publisher, so list its ownership and contact details.
 6. **Other App content declarations.** Ads: no. Target audience: 18+ (avoids Families policies). Government app: no. Financial features: none. Health: none.
 7. **TV quality.** Google reviews TV apps separately. They need the Leanback launcher, a banner, no required touchscreen, full D-pad navigation and working Back. All of these are built in; check them on real hardware.
-8. **Rights and sanctions.** Google may ask for proof that the app may carry each live stream (Metadata and Intellectual property policies). Press TV and RT are under US sanctions: get legal advice before shipping them, or set `SHIP_SANCTIONED = false`. Viewer-added iptv-org streams belong to their broadcasters.
+8. **Rights and sanctions.** Google may ask for proof that the app may carry each live stream (Metadata and Intellectual property policies). Press TV and RT are under US sanctions: they are left out of the build until you have legal advice (see `piaz.shipSanctioned` in `gradle.properties`). Viewer-added iptv-org streams belong to their broadcasters.
 9. **Release.** Upload both bundles to internal testing, then closed testing, then production with a staged rollout. Nothing has been published, and no accounts have been created.

@@ -8,10 +8,11 @@ package news.piaz.shared
  * Leaving the list empty is fine: viewers can still add channels from the iptv-org directory.
  *
  * Rights: Google Play can ask for proof that the app may carry each stream. Press TV and RT are under
- * US sanctions; get legal advice before shipping them. Set `SHIP_SANCTIONED` to false to drop them.
+ * US sanctions, so they are left out of the build until legal sign-off. Their entries stay below; to ship
+ * them, set `piaz.shipSanctioned=true` in gradle.properties (or pass -Ppiaz.shipSanctioned=true for one build).
  */
 object LiveChannels {
-    const val SHIP_SANCTIONED = true
+    val SHIP_SANCTIONED = BuildConfig.SHIP_SANCTIONED
     private val sanctioned = setOf("presstv", "rt", "rtar")
 
     private val all = listOf(

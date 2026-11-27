@@ -8,10 +8,15 @@ plugins {
 android {
     namespace = "news.piaz.shared"
     compileSdk = 35
-    defaultConfig { minSdk = 24 }
+    defaultConfig {
+        minSdk = 24
+        // See piaz.shipSanctioned in gradle.properties.
+        val ship = (findProperty("piaz.shipSanctioned") as String?)?.toBoolean() ?: false
+        buildConfigField("boolean", "SHIP_SANCTIONED", ship.toString())
+    }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
     kotlinOptions { jvmTarget = "17" }
-    buildFeatures { compose = true }
+    buildFeatures { compose = true; buildConfig = true }
 }
 
 dependencies {
