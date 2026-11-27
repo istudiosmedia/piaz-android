@@ -14,7 +14,9 @@ Title: The Piaz (news.piaz) and The Piaz for TV (news.piaz.tv)
 - Anti-features: NonFreeNet (YouTube embeds, broadcaster live streams).
 - Metadata: fastlane, in `app/fastlane` and `tv/fastlane`.
 
-## IzzyOnDroid (https://github.com/IzzyOnDroid/repodata/issues/new)
+## IzzyOnDroid (https://codeberg.org/IzzyOnDroid/repodata/issues)
+
+**Not submitted.** IzzyOnDroid's inclusion policy (https://izzyondroid.org/docs/general/AppInclusionPolicy/) rejects apps whose code was written by generative AI tools, and this app's code was. Requests are filed at https://codeberg.org/IzzyOnDroid/repodata/issues if that changes.
 
 Title: Inclusion request: The Piaz (news.piaz, news.piaz.tv)
 

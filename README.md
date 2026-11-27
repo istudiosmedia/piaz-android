@@ -72,12 +72,11 @@ Store listings (titles, descriptions, icons, screenshots, TV banner, changelogs)
 3. Open a merge request adding both files to `metadata/` in https://gitlab.com/fdroid/fdroiddata (this needs a GitLab account). Or open a "Request For Packaging" issue in https://gitlab.com/fdroid/rfp with the repo link.
 4. F-Droid will mark the app **NonFreeNet**, because videos come from YouTube and live streams from broadcasters. That is expected and does not block inclusion. Review usually takes a few weeks.
 
-**IzzyOnDroid** lists APKs that you sign and attach to GitHub releases, and usually appears within days.
-1. Create a release key once: `keytool -genkeypair -v -keystore piaz-release.jks -alias piaz -keyalg RSA -keysize 4096 -validity 10000`. Choose the passwords yourself and store them in a password manager.
-2. Build signed APKs (`./gradlew assembleRelease`) and attach `app-release.apk` and `tv-release.apk` to a GitHub release tagged `v3.1`.
-3. Open an inclusion request at https://github.com/IzzyOnDroid/repodata/issues with the repo link.
+**GitHub releases** carry APKs signed with the IStudios Media key (kept outside the repo, in `~/piaz-signing`). Build them with `./gradlew assembleRelease` and attach them to a release named after the tag, as in https://github.com/istudiosmedia/piaz-android/releases/tag/v3.1.
 
-F-Droid and IzzyOnDroid builds are signed with different keys, so a user cannot update from one to the other without reinstalling. Say so in the repo README.
+**IzzyOnDroid** lists APKs from GitHub releases. **Not submitted.** IzzyOnDroid's inclusion policy (https://izzyondroid.org/docs/general/AppInclusionPolicy/) rejects apps whose code was written by generative AI tools, and this app's code was. Requests are filed at https://codeberg.org/IzzyOnDroid/repodata/issues if that changes.
+
+F-Droid builds and GitHub release builds are signed with different keys, so a user cannot update from one to the other without reinstalling. The release notes say so.
 
 ## Google Play launch checklist
 
